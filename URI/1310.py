@@ -1,10 +1,3 @@
-def max_subarray(A):
-    max_ending_here = max_so_far = A[0]
-    for x in A[1:]:
-        max_ending_here = max(x, max_ending_here + x)
-        max_so_far = max(0, max_so_far, max_ending_here)
-    return max_so_far
-
 while True:
     try:
         n = int(raw_input())
@@ -12,11 +5,17 @@ while True:
 
         lucros = [] 
 
+        resp = 0
+        maior = 0
+
         for i in range(n):
-            lucros.append(int(raw_input()) - custo_dia)
+            lucro_atual = int(raw_input()) - custo_dia
+            maior = max(0, maior + lucro_atual)
+
+            resp = max(resp, maior)
         
 
-        print max_subarray(lucros)
+        print resp
 
     except EOFError:
         break
